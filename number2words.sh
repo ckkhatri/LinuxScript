@@ -102,7 +102,7 @@ function Four()
     local p=`echo ${num:1:3}`
     if [ $n -gt 0 ] ; then
       One $n
-      words=`echo "$words Thousand"`
+      words=`echo "$words Thousand,"`
  
     fi
     Three $p
@@ -115,7 +115,7 @@ function Five()
     local p=`echo ${num:2:3}`
     if [ $n -gt 0 ] ; then
       Two $n
-      words=`echo "$words Thousand"`
+      words=`echo "$words Thousand,"`
   
     fi
     Three $p
@@ -124,53 +124,53 @@ function Five()
 function Six()
 {
     local num=$1
-    local n=`echo ${num:0:1}`
-    local p=`echo ${num:1:5}`
+    local n=`echo ${num:0:3}`
+    local p=`echo ${num:3:5}`
     if [ $n -gt 0 ] ; then
-      One $n
-      words=`echo "$words Lac"`
+      Three $n
+      words=`echo "$words Thousand,"`
    
     fi
-    Five $p
+    Three $p
 }
 
 function Seven()
 {
     local num=$1
-    local n=`echo ${num:0:2}`
-    local p=`echo ${num:2:5}`
+    local n=`echo ${num:0:1}`
+    local p=`echo ${num:1:6}`
     if [ $n -gt 0 ] ; then
-      Two $n
-      words=`echo "$words Lac"`
+      One $n
+      words=`echo "$words Million,"`
     
     fi
-    Five $p
+    Six $p
 }
 
 function Eight()
-{
-    local num=$1
-    local n=`echo ${num:0:1}`
-    local p=`echo ${num:1:7}`
-    if [ $n -gt 0 ] ; then
-      One $n
-      words=`echo "$words Crore"`
-     
-    fi
-    Seven $p
-}
-
-function Nine()
 {
     local num=$1
     local n=`echo ${num:0:2}`
     local p=`echo ${num:2:7}`
     if [ $n -gt 0 ] ; then
       Two $n
-      words=`echo "$words Crore"`
+      words=`echo "$words Million,"`
+     
+    fi
+    Six $p
+}
+
+function Nine()
+{
+    local num=$1
+    local n=`echo ${num:0:3}`
+    local p=`echo ${num:3:8}`
+    if [ $n -gt 0 ] ; then
+      Three $n
+      words=`echo "$words Million,"`
   #    
     fi
-    Seven $p
+    Six $p
 }
 
 function Ten()
@@ -180,7 +180,7 @@ function Ten()
     local p=`echo ${num:1:9}`
     if [ $n -gt 0 ] ; then
       One $n
-      words=`echo "$words Billion"`
+      words=`echo "$words Billion,"`
    #   
     fi
     Nine $p
@@ -190,10 +190,10 @@ function Eleven()
 {
     local num=$1
     local n=`echo ${num:0:2}`
-    local p=`echo ${num:2:9}`
+    local p=`echo ${num:2:10}`
     if [ $n -gt 0 ] ; then
       Two $n
-      words=`echo "$words Billion"`
+      words=`echo "$words Billion,"`
     
     fi
     Nine $p
@@ -203,10 +203,10 @@ function Twelve()
 {
     local num=$1
     local n=`echo ${num:0:3}`
-    local p=`echo ${num:3:9}`
+    local p=`echo ${num:3:11}`
     if [ $n -gt 0 ] ; then
       Three $n
-      words=`echo "$words Billion"`
+      words=`echo "$words Billion,"`
      
     fi
     Nine $p
@@ -219,7 +219,7 @@ function Thirteen()
     local p=`echo ${num:1:12}`
     if [ $n -gt 0 ] ; then
       One $n
-      words=`echo "$words Trillion"`
+      words=`echo "$words Trillion,"`
       #
     fi
     Twelve $p
@@ -229,10 +229,10 @@ function Fourteen()
 {
     local num=$1
     local n=`echo ${num:0:2}`
-    local p=`echo ${num:2:12}`
+    local p=`echo ${num:2:13}`
     if [ $n -gt 0 ] ; then
       Two $n
-      words=`echo "$words Trillion"`
+      words=`echo "$words Trillion,"`
     
     fi
     Twelve $p
@@ -242,10 +242,10 @@ function Fifteen()
 {
     local num=$1
     local n=`echo ${num:0:3}`
-    local p=`echo ${num:3:12}`
+    local p=`echo ${num:3:14}`
     if [ $n -gt 0 ] ; then
       Three $n
-      words=`echo "$words Trillion"`
+      words=`echo "$words Trillion,"`
      
     fi
     Twelve $p
